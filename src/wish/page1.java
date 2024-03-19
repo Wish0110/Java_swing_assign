@@ -38,6 +38,12 @@ public class page1 extends JFrame implements ActionListener {
         furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds forabsolute positioning
 
         // Create a new JPanel with a white background
+
+        // Add components directly to the frame
+        this.add(furnitureLabel);
+        this.add(furnitureComboBox);
+        this.add(whiteBox);
+
         whiteBox = new JPanel();
         whiteBox.setBackground(Color.WHITE);
         whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
@@ -46,16 +52,9 @@ public class page1 extends JFrame implements ActionListener {
         submitButton.setBackground(Color.red);
         submitButton.addActionListener(this);
 
-        // Add components directly to the frame
-        this.add(furnitureLabel);
-        this.add(furnitureComboBox);
-
-        // Add the white box to the frame after adding the other components
-        this.add(whiteBox);
-
         // Call revalidate() and repaint() to update the layout and size of the frame
-        this.revalidate();
-        this.repaint();
+        //this.revalidate();
+        //this.repaint();
         this.add(submitButton);
 
         this.pack();
@@ -65,10 +64,16 @@ public class page1 extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (furnitureComboBox.getSelectedItem().equals("Black")) {
-            whiteBox.setBackground(Color.BLACK);
-        } else {
-            whiteBox.setBackground(Color.WHITE);
+        if (e.getSource() == furnitureComboBox) {
+            // Handle furniture selection
+            if (furnitureComboBox.getSelectedItem().equals("Black")) {
+                whiteBox.setBackground(Color.BLACK);
+            } else {
+                whiteBox.setBackground(Color.WHITE);
+            }
+        } else if (e.getSource() == submitButton) {
+            // No additional logic needed for submit button click as color change
+            // already happens based on furniture selection.
         }
     }
 
