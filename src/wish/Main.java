@@ -1,7 +1,9 @@
 package wish;
 
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +18,6 @@ public class Main {
         titleLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
         //titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setBounds(70, 100, getWidth(), 30); // Set bounds for absolute positioning*/
-
             }
         };
     }

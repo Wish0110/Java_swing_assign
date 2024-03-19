@@ -25,6 +25,7 @@ public class page1 extends JFrame implements ActionListener {
         JLabel furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
+        furnitureLabel.setBounds(70, 150, 150, 20); // Set bounds for absolute positioning
 
         String[] furnitureOptions = {"Select...", "Brown", "Black", "White"};
         furnitureComboBox = new JComboBox<>(furnitureOptions);
@@ -32,23 +33,23 @@ public class page1 extends JFrame implements ActionListener {
 
         furnitureComboBox.addActionListener(this);
 
-        // Use FlowLayout for easier component arrangement
-        this.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        // Add components
-        this.add(furnitureLabel);
-        this.add(furnitureComboBox);
-
         // Create a new JPanel with a white background
         whiteBox = new JPanel();
         whiteBox.setBackground(Color.WHITE);
-        whiteBox.setPreferredSize(new Dimension(50, 50));
+        whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
+
+        // Add components directly to the frame
+        this.add(furnitureLabel);
+        this.add(furnitureComboBox);
         this.add(whiteBox);
 
         submitButton = new JButton("Submit");
-        submitButton.setBackground(Color.red);
+        submitButton.setBackground(Color.RED);
         submitButton.addActionListener(this);
 
+        // Call revalidate() and repaint() to update the layout and size of the frame
+        this.revalidate();
+        this.repaint();
         this.add(submitButton);
 
         this.pack();
@@ -65,6 +66,9 @@ public class page1 extends JFrame implements ActionListener {
             } else {
                 whiteBox.setBackground(Color.WHITE);
             }
+        } else if (e.getSource() == submitButton) {
+            // No additional logic needed for submit button click as color change
+            // already happens based on furniture selection.
         }
     }
 
