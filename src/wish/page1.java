@@ -19,42 +19,29 @@ public abstract class page1 extends JFrame implements ActionListener {
         // Create a custom panel to handle background painting
         this.setContentPane(new BackgroundPanel());
 
-        //tittle text
-        JLabel titleLabel = new JLabel();
-        titleLabel.setText("Wall Color According to Furniture");
-        titleLabel.setForeground(Color.decode("#F7AD3A"));
-        titleLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
-        titleLabel.setHorizontalAlignment(JLabel.CENTER);
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
 
         // Furniture Color label text
         JLabel furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        furnitureLabel.setBorder(BorderFactory.createEmptyBorder(0, 70, 150, 0));
+        furnitureLabel.setBounds(70, 150, 150, 20); // Set bounds for absolute positioning
 
         String[] furnitureOptions = {"Select...", "Brown", "Black", "White"};
         furnitureComboBox = new JComboBox<>(furnitureOptions);
         furnitureComboBox.setPreferredSize(new Dimension(150, 25));
 
-        // Use a layout manager for positioning
-        this.setLayout(new BorderLayout());
+        // Remove layout manager
+        this.setLayout(null);
 
-        // Add labels to appropriate positions
-        this.add(titleLabel, BorderLayout.NORTH);
-        this.add(furnitureLabel, BorderLayout.WEST);
-        // Pack and set size after setting content pane
+        // Furniture ComboBox (without transparent frame)
+        furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds for absolute positioning
 
-        JPanel centerPanel = new JPanel();
-        centerPanel.setOpaque(false); // Make the panel transparent to maintain background image
-        centerPanel.add(furnitureComboBox);
-        centerPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the combobox horizontally
-
-        // Add the center panel to the center of the layout
-        this.add(centerPanel, BorderLayout.CENTER);
+        // Add components directly to the frame
+        //this.add(titleLabel);
+        this.add(furnitureLabel);
+        this.add(furnitureComboBox);
 
         this.pack();
-
         this.setSize(900, 600);
         this.setVisible(true);
     }
@@ -69,6 +56,5 @@ public abstract class page1 extends JFrame implements ActionListener {
                 g.drawImage(backgroundImageIcon.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
             }
         }
-
     }
-    }
+}
