@@ -42,6 +42,9 @@ public class page1 extends JFrame implements ActionListener {
         whiteBox.setBackground(Color.WHITE);
         whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
 
+        submitButton = new JButton("Submit");
+        submitButton.addActionListener(this);
+
         // Add components directly to the frame
         this.add(furnitureLabel);
         this.add(furnitureComboBox);
