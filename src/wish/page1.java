@@ -38,15 +38,14 @@ public class page1 extends JFrame implements ActionListener {
         furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds forabsolute positioning
 
         // Create a new JPanel with a white background
+        whiteBox = new JPanel();
+        whiteBox.setBackground(Color.WHITE);
+        whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
 
         // Add components directly to the frame
         this.add(furnitureLabel);
         this.add(furnitureComboBox);
         this.add(whiteBox);
-
-        whiteBox = new JPanel();
-        whiteBox.setBackground(Color.WHITE);
-        whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
 
         submitButton = new JButton("Submit");
         submitButton.setBackground(Color.red);
