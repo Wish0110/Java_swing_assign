@@ -2,11 +2,13 @@ package wish;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class page1 extends JFrame {
+public abstract class page1 extends JFrame implements ActionListener {
 
     private ImageIcon backgroundImageIcon;
-    private JComboBox<String> furnitureComboBox;
+    JComboBox comboBox;
 
     public page1() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,6 +33,10 @@ public class page1 extends JFrame {
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
         furnitureLabel.setBorder(BorderFactory.createEmptyBorder(0, 70, 150, 0));
 
+        String[] animals = {"dog","cat","bird"};
+        comboBox = new JComboBox(animals);
+        comboBox.addActionListener(this);
+
         // Use a layout manager for positioning
         this.setLayout(new BorderLayout());
 
@@ -38,6 +44,8 @@ public class page1 extends JFrame {
         this.add(titleLabel, BorderLayout.NORTH);
         this.add(furnitureLabel, BorderLayout.WEST);
         // Pack and set size after setting content pane
+        this.add(comboBox);
+
         this.pack();
 
         this.setSize(900, 600);
@@ -54,5 +62,11 @@ public class page1 extends JFrame {
                 g.drawImage(backgroundImageIcon.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
             }
         }
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==comboBox) {
+                System.out.println(comboBox.getSelectedItem());
+                //System.out.println(comboBox.getSelectedIndex());
+            }
+    }
     }
 }
