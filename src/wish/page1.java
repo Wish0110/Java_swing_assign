@@ -32,7 +32,7 @@ public class page1 extends JFrame implements ActionListener {
 
         furnitureComboBox.addActionListener(this);
         // Remove layout manager
-        this.setLayout(null);
+        this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         // Furniture ComboBox (without transparent frame)
         furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds forabsolute positioning
@@ -43,6 +43,7 @@ public class page1 extends JFrame implements ActionListener {
         whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
 
         submitButton = new JButton("Submit");
+        submitButton.setBackground(Color.red);
         submitButton.addActionListener(this);
 
         // Add components directly to the frame
