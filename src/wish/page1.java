@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public abstract class page1 extends JFrame implements ActionListener {
 
     private ImageIcon backgroundImageIcon;
-    JComboBox comboBox;
+    private JComboBox<String> furnitureComboBox;
 
     public page1() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,11 +33,9 @@ public abstract class page1 extends JFrame implements ActionListener {
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
         furnitureLabel.setBorder(BorderFactory.createEmptyBorder(0, 70, 150, 0));
 
-        String[] animals = {"dog","cat","bird"};
-        comboBox = new JComboBox(animals);
-        comboBox.addActionListener(this);
-        comboBox.setMinimumSize(new Dimension(100, 20)); // Adjust minimum width and height
-
+        String[] furnitureOptions = {"Select...", "Brown", "Black", "White"};
+        furnitureComboBox = new JComboBox<>(furnitureOptions);
+        furnitureComboBox.setPreferredSize(new Dimension(150, 25));
 
         // Use a layout manager for positioning
         this.setLayout(new BorderLayout());
@@ -46,7 +44,14 @@ public abstract class page1 extends JFrame implements ActionListener {
         this.add(titleLabel, BorderLayout.NORTH);
         this.add(furnitureLabel, BorderLayout.WEST);
         // Pack and set size after setting content pane
-        this.add(comboBox);
+
+        JPanel centerPanel = new JPanel();
+        centerPanel.setOpaque(false); // Make the panel transparent to maintain background image
+        centerPanel.add(furnitureComboBox);
+        centerPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the combobox horizontally
+
+        // Add the center panel to the center of the layout
+        this.add(centerPanel, BorderLayout.CENTER);
 
         this.pack();
 
@@ -64,11 +69,6 @@ public abstract class page1 extends JFrame implements ActionListener {
                 g.drawImage(backgroundImageIcon.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
             }
         }
-        public void actionPerformed(ActionEvent e) {
-            if(e.getSource()==comboBox) {
-                System.out.println(comboBox.getSelectedItem());
-                //System.out.println(comboBox.getSelectedIndex());
-            }
+
     }
     }
-}
