@@ -36,7 +36,8 @@ public abstract class page1 extends JFrame implements ActionListener {
         String[] animals = {"dog","cat","bird"};
         comboBox = new JComboBox(animals);
         comboBox.addActionListener(this);
-        comboBox.setPreferredSize(new Dimension(30, 30)); // Sets width to 150px and height to 30px
+        comboBox.setMinimumSize(new Dimension(100, 20)); // Adjust minimum width and height
+
 
         // Use a layout manager for positioning
         this.setLayout(new BorderLayout());
