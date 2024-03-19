@@ -4,10 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class page1 extends JFrame implements ActionListener {
+public class page1 extends JFrame implements ActionListener {
 
     private ImageIcon backgroundImageIcon;
     private JComboBox<String> furnitureComboBox;
+    private JPanel whiteBox;
 
     public page1() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,22 +33,36 @@ public abstract class page1 extends JFrame implements ActionListener {
         this.setLayout(null);
 
         // Furniture ComboBox (without transparent frame)
-        furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds for absolute positioning
+        furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds forabsolute positioning
 
         // Create a new JPanel with a white background
-        JPanel whiteBox = new JPanel();
+        whiteBox = new JPanel();
         whiteBox.setBackground(Color.WHITE);
         whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
 
         // Add components directly to the frame
-        //this.add(titleLabel);
         this.add(furnitureLabel);
         this.add(furnitureComboBox);
-        this.add(whiteBox); // Add the white box to the frame
+
+        // Add the white box to the frame after adding the other components
+        this.add(whiteBox);
+
+        // Call revalidate() and repaint() to update the layout and size of the frame
+        this.revalidate();
+        this.repaint();
 
         this.pack();
         this.setSize(900, 600);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (furnitureComboBox.getSelectedItem().equals("Black")) {
+            whiteBox.setBackground(Color.BLACK);
+        } else {
+            whiteBox.setBackground(Color.WHITE);
+        }
     }
 
     private class BackgroundPanel extends JPanel {
