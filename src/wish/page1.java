@@ -30,6 +30,7 @@ public class page1 extends JFrame implements ActionListener {
         furnitureComboBox = new JComboBox<>(furnitureOptions);
         furnitureComboBox.setPreferredSize(new Dimension(150, 25));
 
+        furnitureComboBox.addActionListener(this);
         // Remove layout manager
         this.setLayout(null);
 
@@ -51,6 +52,7 @@ public class page1 extends JFrame implements ActionListener {
         // Call revalidate() and repaint() to update the layout and size of the frame
         this.revalidate();
         this.repaint();
+        this.add(submitButton);
 
         this.pack();
         this.setSize(900, 600);
