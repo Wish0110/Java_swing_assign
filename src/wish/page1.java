@@ -1,5 +1,4 @@
 package wish;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +18,6 @@ public abstract class page1 extends JFrame implements ActionListener {
         // Create a custom panel to handle background painting
         this.setContentPane(new BackgroundPanel());
 
-
         // Furniture Color label text
         JLabel furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
@@ -36,10 +34,16 @@ public abstract class page1 extends JFrame implements ActionListener {
         // Furniture ComboBox (without transparent frame)
         furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds for absolute positioning
 
+        // Create a new JPanel with a white background
+        JPanel whiteBox = new JPanel();
+        whiteBox.setBackground(Color.WHITE);
+        whiteBox.setBounds(0, 200, 50, 50); // Set bounds for absolute positioning
+
         // Add components directly to the frame
         //this.add(titleLabel);
         this.add(furnitureLabel);
         this.add(furnitureComboBox);
+        this.add(whiteBox); // Add the white box to the frame
 
         this.pack();
         this.setSize(900, 600);
