@@ -37,7 +37,7 @@ public abstract class page1 extends JFrame implements ActionListener {
         // Create a new JPanel with a white background
         JPanel whiteBox = new JPanel();
         whiteBox.setBackground(Color.WHITE);
-        whiteBox.setBounds(0, 200, 50, 50); // Set bounds for absolute positioning
+        whiteBox.setBounds(200, 50, 50, 50); // Set bounds for absolute positioning
 
         // Add components directly to the frame
         //this.add(titleLabel);
