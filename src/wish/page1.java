@@ -9,6 +9,7 @@ public class page1 extends JFrame implements ActionListener {
     private ImageIcon backgroundImageIcon;
     private JComboBox<String> furnitureComboBox;
     private JPanel whiteBox;
+    private JButton submitButton;
 
     public page1() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
