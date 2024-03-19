@@ -1,4 +1,5 @@
 package wish;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,36 +25,30 @@ public class page1 extends JFrame implements ActionListener {
         JLabel furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        furnitureLabel.setBounds(70, 150, 150, 20); // Set bounds for absolute positioning
 
         String[] furnitureOptions = {"Select...", "Brown", "Black", "White"};
         furnitureComboBox = new JComboBox<>(furnitureOptions);
         furnitureComboBox.setPreferredSize(new Dimension(150, 25));
 
         furnitureComboBox.addActionListener(this);
-        // Remove layout manager
+
+        // Use FlowLayout for easier component arrangement
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        // Furniture ComboBox (without transparent frame)
-        furnitureComboBox.setBounds(230, 150, 150, 25); // Set bounds forabsolute positioning
+        // Add components
+        this.add(furnitureLabel);
+        this.add(furnitureComboBox);
 
         // Create a new JPanel with a white background
         whiteBox = new JPanel();
         whiteBox.setBackground(Color.WHITE);
-        whiteBox.setBounds(600, 150, 50, 50); // Set bounds for absolute positioning
-
-        // Add components directly to the frame
-        this.add(furnitureLabel);
-        this.add(furnitureComboBox);
+        whiteBox.setPreferredSize(new Dimension(50, 50));
         this.add(whiteBox);
 
         submitButton = new JButton("Submit");
         submitButton.setBackground(Color.red);
         submitButton.addActionListener(this);
 
-        // Call revalidate() and repaint() to update the layout and size of the frame
-        //this.revalidate();
-        //this.repaint();
         this.add(submitButton);
 
         this.pack();
@@ -70,9 +65,6 @@ public class page1 extends JFrame implements ActionListener {
             } else {
                 whiteBox.setBackground(Color.WHITE);
             }
-        } else if (e.getSource() == submitButton) {
-            // No additional logic needed for submit button click as color change
-            // already happens based on furniture selection.
         }
     }
 
