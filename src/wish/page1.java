@@ -50,7 +50,7 @@ public class page1 extends JFrame {
         gbcWallColorLabel.insets = new Insets(0, 120, 250, 0);  // Margin for wallColorLabel
 
         GridBagConstraints gbcFurnitureLabel = new GridBagConstraints();
-        gbcFurnitureLabel.insets = new Insets(55, 20, 10, 20);  // Margin for furnitureLabel
+        gbcFurnitureLabel.insets = new Insets(5, 20, 100, 20);  // Margin for furnitureLabel
 
         GridBagConstraints gbcColorSelector = new GridBagConstraints();
         gbcColorSelector.insets = new Insets(0, 20, 10, 50);  // Margin for colorSelector
