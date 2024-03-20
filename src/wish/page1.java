@@ -53,8 +53,7 @@ public class page1 extends JFrame {
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
         gbc.gridx = 0;
         gbc.gridy = 0;
-          // Center horizontally
-        gbc.insets = new Insets(0, 0, 450, 0);  // Top inset of 100px
+        gbc.insets = new Insets(0, 250, 450, 0);  // Top inset of 100px
         this.add(wallColorLabel, gbc);
 
         // Add spacing between labels (adjust as needed)
