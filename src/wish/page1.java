@@ -47,7 +47,7 @@ public class page1 extends JFrame {
 
         // Separate GridBagConstraints objects with individual insets
         GridBagConstraints gbcWallColorLabel = new GridBagConstraints();
-        gbcWallColorLabel.insets = new Insets(10, 120, 200, 0);  // Margin for wallColorLabel
+        gbcWallColorLabel.insets = new Insets(0, 120, 250, 0);  // Margin for wallColorLabel
 
         GridBagConstraints gbcFurnitureLabel = new GridBagConstraints();
         gbcFurnitureLabel.insets = new Insets(5, 20, 10, 20);  // Margin for furnitureLabel
