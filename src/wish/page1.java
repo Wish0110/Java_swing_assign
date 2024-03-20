@@ -12,7 +12,7 @@ public class page1 extends JFrame {
     private ImageIcon backgroundImageIcon;
     private JPanel colorBox;
     private JComboBox<String> colorSelector;
-    private JLabel furnitureLabel;
+    private JLabel furnitureLabel, wallColorLabel;
 
     public page1() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
