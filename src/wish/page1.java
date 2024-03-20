@@ -1,7 +1,7 @@
 package wish;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -14,9 +14,9 @@ public class page1 {
     private Image backgroundImage;
 
     public page1() {
-
+        // Load background image
         try {
-            backgroundImage = ImageIO.read(getClass().getResource("/path/to/your/image.jpg"));
+            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\backgroundimg1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,7 +39,13 @@ public class page1 {
         colorBox.setPreferredSize(new Dimension(100, 100));
 
         // Create layout
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         panel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -75,15 +81,7 @@ public class page1 {
         frame.setResizable(false);
 
         // Add panel to the window
-        frame.add(panel, BorderLayout.CENTER);
-
-        frame.setContentPane(new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-            }
-        });
+        frame.setContentPane(panel);
 
         // Show window
         frame.setVisible(true);
@@ -91,7 +89,6 @@ public class page1 {
         // Set initial color
         updateColor();
     }
-
     private void updateColor() {
         String selectedColor = (String) colorSelector.getSelectedItem();
         Color color = Color.white;
