@@ -15,7 +15,7 @@ public class page1 {
     public page1() {
         // Load background image
         try {
-            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\backgroundimg1.png"));
+            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\wall color according furnitures - 12.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
