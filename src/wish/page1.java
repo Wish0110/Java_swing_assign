@@ -40,52 +40,46 @@ public class page1 extends JFrame {
             }
         });
 
+        // Using setBounds for component placement
+        int windowWidth = 900;
+        int windowHeight = 600;
 
-        // Create a horizontal layout manager
-        GridBagLayout layout = new GridBagLayout();
-        this.setLayout(layout);
-
-        // Separate GridBagConstraints objects with individual insets
-        GridBagConstraints gbcWallColorLabel = new GridBagConstraints();
-        gbcWallColorLabel.insets = new Insets(0, 120, 250, 0);  // Margin for wallColorLabel
-
-        GridBagConstraints gbcFurnitureLabel = new GridBagConstraints();
-        gbcFurnitureLabel.insets = new Insets(5, 20, 100, 20);  // Margin for furnitureLabel
-
-        GridBagConstraints gbcColorSelector = new GridBagConstraints();
-        gbcColorSelector.insets = new Insets(0, 20, 10, 50);  // Margin for colorSelector
-
-        // **Wall Color Label (Top, Left-aligned with padding)**
+        // Wall Color Label (Top, Left-aligned with padding)
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
-        gbcWallColorLabel.gridx = 0;  // Leftmost column
-        gbcWallColorLabel.gridy = 0;  // Top row
-        gbcWallColorLabel.anchor = GridBagConstraints.WEST;  // Left-aligned
-        this.add(wallColorLabel, gbcWallColorLabel);
+        int wallColorLabelWidth = (int) wallColorLabel.getPreferredSize().getWidth();
+        int wallColorLabelHeight = (int) wallColorLabel.getPreferredSize().getHeight();
+        wallColorLabel.setBounds(10, 10, wallColorLabelWidth, wallColorLabelHeight);  // Adjust padding as needed
 
-        // **Furniture Label (Next row, Left-aligned)**
+        // Furniture Label (Next row, Left-aligned)
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        gbcFurnitureLabel.gridy = 1;  // Next row
-        this.add(furnitureLabel, gbcFurnitureLabel);
+        int furnitureLabelWidth = (int) furnitureLabel.getPreferredSize().getWidth();
+        int furnitureLabelHeight = (int) furnitureLabel.getPreferredSize().getHeight();
+        furnitureLabel.setBounds(10, wallColorLabelHeight + 20, furnitureLabelWidth, furnitureLabelHeight);  // Adjust padding as needed
 
-        // **Combo Box (Next row, Left-aligned)**
-        gbcColorSelector.gridy = 2;
-        this.add(colorSelector, gbcColorSelector);
-        // **Color Box (Next row, Right-aligned)**
-        gbcColorSelector.fill = GridBagConstraints.NONE;  // Don't fill horizontally (use a separate gbc for colorBox)
-        gbcColorSelector.gridx = 1;  // Move to the second column (right side)
-        gbcColorSelector.weightx = 0.0;  // No extra space allocation
-        gbcColorSelector.anchor = GridBagConstraints.EAST;  // Right-aligned
-        this.add(colorBox, gbcColorSelector);
+        // Combo Box (Next row, Left-aligned)
+        int colorSelectorWidth = colorSelector.getPreferredSize().width;
+        int colorSelectorHeight = colorSelector.getPreferredSize().height;
+        colorSelector.setBounds(10, furnitureLabelHeight + 40, colorSelectorWidth, colorSelectorHeight);  // Adjust padding as needed
 
-        this.pack();
-        this.setSize(900, 600);
+        // Color Box (Next row, Right-aligned)
+        int colorBoxWidth = 50;  // Set desired width
+        int colorBoxHeight = 50;  // Set desired height
+        int xPos = windowWidth - colorBoxWidth - 10;  // Calculate x position for right alignment
+        colorBox.setBounds(xPos, furnitureLabelHeight + 40, colorBoxWidth, colorBoxHeight);
+
+        this.add(wallColorLabel);
+        this.add(furnitureLabel);
+        this.add(colorSelector);
+        this.add(colorBox);
+
+        this.pack();  // Not strictly necessary with setBounds
+        this.setSize(windowWidth, windowHeight);
         this.setVisible(true);
     }
-
     private class BackgroundPanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
