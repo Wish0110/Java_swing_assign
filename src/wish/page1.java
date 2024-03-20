@@ -1,6 +1,9 @@
 package wish;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class page1 {
 
@@ -8,8 +11,16 @@ public class page1 {
     private JLabel furnitureLabel;
     private JComboBox<String> colorSelector;
     private JPanel colorBox;
+    private Image backgroundImage;
 
     public page1() {
+
+        try {
+            backgroundImage = ImageIO.read(getClass().getResource("/path/to/your/image.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // Create components
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A"));
@@ -65,6 +76,14 @@ public class page1 {
 
         // Add panel to the window
         frame.add(panel, BorderLayout.CENTER);
+
+        frame.setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        });
 
         // Show window
         frame.setVisible(true);
