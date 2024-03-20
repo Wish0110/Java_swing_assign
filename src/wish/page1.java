@@ -14,6 +14,7 @@ public class page1 {
     private JComboBox<String> colorSelector;
     private JPanel colorBox;
     private Image backgroundImage;
+    private JPanel colorBox1, colorBox2;
 
     public page1() {
         // Load background image
@@ -41,9 +42,13 @@ public class page1 {
             }
         });
 
-        colorBox = new JPanel();
-        colorBox.setBackground(Color.white);
-        colorBox.setPreferredSize(new Dimension(100, 100));
+        colorBox1 = new JPanel();
+        colorBox1.setBackground(Color.white);
+        colorBox1.setPreferredSize(new Dimension(100, 100));
+
+        colorBox2 = new JPanel();  // Create the second color box
+        colorBox2.setBackground(Color.white);  // Set initial color (optional)
+        colorBox2.setPreferredSize(new Dimension(100, 100));
 
         // Create layout
         JPanel panel = new JPanel() {
@@ -71,14 +76,18 @@ public class page1 {
 
         // Add text label "Suggested Colors"
         JLabel suggestedColorsLabel = new JLabel("Suggested Colors");
+        suggestedColorsLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
+        suggestedColorsLabel.setForeground(Color.decode("#2B4A47"));
         gbc.gridx = 3;
         gbc.gridy = 1;
         panel.add(suggestedColorsLabel, gbc);
 
-        // Add colorBox to the middle-right corner
         gbc.gridx = 4;
         gbc.gridy = 1;
-        panel.add(colorBox, gbc);
+        panel.add(colorBox1, gbc);
+
+        gbc.gridy = 2;
+        panel.add(colorBox2, gbc);
 
         // Create window
         int windowWidth = 900;
@@ -104,15 +113,30 @@ public class page1 {
         Color color = Color.white;
         switch (selectedColor) {
             case "Black":
-                color = Color.black;
+                color = Color.white;
                 break;
             case "Red":
-                color = Color.RED;
+                color = Color.lightGray;
                 break;
             case "Pink":
-                color = Color.PINK;
+                color = Color.black;
                 break;
         }
-        colorBox.setBackground(color);
+        colorBox1.setBackground(color);
+
+        selectedColor = (String) colorSelector.getSelectedItem();
+        color = Color.white;
+        switch (selectedColor) {
+            case "Black":
+                color = Color.yellow;
+                break;
+            case "Red":
+                color = Color.lightGray;
+                break;
+            case "Pink":
+                color = Color.blue;
+                break;
+        }
+        colorBox2.setBackground(color);
     }
 }
