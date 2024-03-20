@@ -54,7 +54,7 @@ public class page1 extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;  // Center horizontally
-        gbc.insets = new Insets(0, 0, 400, 0);  // Top inset of 100px
+        gbc.insets = new Insets(0, 0, 450, 0);  // Top inset of 100px
         this.add(wallColorLabel, gbc);
 
         // Add spacing between labels (adjust as needed)
