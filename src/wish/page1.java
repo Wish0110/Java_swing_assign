@@ -28,7 +28,8 @@ public class page1 extends JFrame {
 
         // Create the color box and selector
         colorBox = new JPanel();
-        colorBox.setPreferredSize(new Dimension(50, 50));
+        colorBox.setPreferredSize(new Dimension(50, 50));  // Set desired size (width, height)
+        colorBox.setBackground(Color.red);  // Set initial background color (optional)
 
         colorSelector = new JComboBox<>(new String[]{"Black", "Red", "Pink"});
         colorSelector.setPreferredSize(new Dimension(200, 30));
@@ -68,9 +69,9 @@ public class page1 extends JFrame {
         this.add(colorSelector, gbc);
 
         // **Color Box (Next row, Right-aligned)**
-        gbc.fill = GridBagConstraints.HORIZONTAL;  // Fill horizontally
+        gbc.fill = GridBagConstraints.NONE;  // Don't fill horizontally
         gbc.gridx = 1;  // Move to the second column (right side)
-        gbc.weightx = 1.0;  // Allocate remaining space
+        gbc.weightx = 0.0;  // No extra space allocation
         gbc.anchor = GridBagConstraints.EAST;  // Right-aligned
         this.add(colorBox, gbc);
 
