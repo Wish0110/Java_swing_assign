@@ -46,40 +46,33 @@ public class page1 extends JFrame {
 
         // Center components horizontally
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.anchor = GridBagConstraints.CENTER;
 
+        // **Wall Color Label (Top, Centered)**
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 250, 450, 0);  // Top inset of 100px
+        gbc.gridx = 0;  // Leftmost column
+        gbc.gridy = 0;  // Top row
+        gbc.anchor = GridBagConstraints.CENTER;  // Center horizontally
+        gbc.insets = new Insets(100, 250, 10, 0);  // Top inset of 100px, adjust horizontal padding if needed
         this.add(wallColorLabel, gbc);
 
-        // Add spacing between labels (adjust as needed)
-        gbc.insets = new Insets(10, 0, 10, 0);
-
+        // **Furniture Label (Next Row, Left-aligned)**
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-
-        gbc.gridx = 0;  // Add label to the first column (left)
-        gbc.gridy = 0;
+        gbc.gridy = 1;  // Next row after wallColorLabel
+        gbc.anchor = GridBagConstraints.WEST;  // Left-aligned (default)
+        gbc.insets = new Insets(10, 0, 10, 0);  // Adjust spacing between labels if needed
         this.add(furnitureLabel, gbc);
 
-        // Add spacing between label and combobox (adjust as needed)
-        gbc.insets = new Insets(0, 10, 0, 0);
-
-        gbc.gridx = 1;  // Add combobox to the second column (right)
+        // **Combo Box (Next Row, Right-aligned)**
+        gbc.gridy = 2;  // Next row after furnitureLabel
         this.add(colorSelector, gbc);
 
-        gbc.insets = new Insets(0, 200, 0, 0);  // Reset insets for combobox spacing
-
-        gbc.gridx = 2;  // Add color box to the third column (optional)
+        // **Color Box (Next Row, Optional)**
+        gbc.gridy = 3;  // Next row
         this.add(colorBox, gbc);
-
-
-
 
         this.pack();
         this.setSize(900, 600);
