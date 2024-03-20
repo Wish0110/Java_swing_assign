@@ -28,7 +28,7 @@ public class page1 extends JFrame {
 
         // Create the color box and selector
         colorBox = new JPanel();
-        colorBox.setPreferredSize(new Dimension(100, 100));
+        colorBox.setPreferredSize(new Dimension(50, 50));
 
         colorSelector = new JComboBox<>(new String[]{"Black", "Red", "Pink"});
         colorSelector.setPreferredSize(new Dimension(200, 30));
