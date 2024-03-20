@@ -30,6 +30,10 @@ public class page1 {
 
         String[] colors = {"Black", "Red", "Pink"};
         colorSelector = new JComboBox<>(colors);
+        colorSelector.setBackground(Color.decode("#2B4A47"));
+        colorSelector.setForeground(Color.decode("#F7AD3A"));
+        colorSelector.setPreferredSize(new Dimension(150, 30));
+
         colorSelector.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,30 +53,30 @@ public class page1 {
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
             }
         };
+
         panel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 20, 10, 20);
         gbc.anchor = GridBagConstraints.WEST;
 
-
         // Add furnitureLabel to the middle-left corner
         gbc.gridy = 1;
         panel.add(furnitureLabel, gbc);
-
-        // Add text label "Suggested Colors"
-        JLabel suggestedColorsLabel = new JLabel("Suggested Colors");
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        panel.add(suggestedColorsLabel, gbc);
 
         // Add colorSelector to the middle-center corner
         gbc.gridx = 2;
         gbc.gridy = 1;
         panel.add(colorSelector, gbc);
 
-        // Add colorBox to the middle-right corner
+        // Add text label "Suggested Colors"
+        JLabel suggestedColorsLabel = new JLabel("Suggested Colors");
         gbc.gridx = 3;
+        gbc.gridy = 1;
+        panel.add(suggestedColorsLabel, gbc);
+
+        // Add colorBox to the middle-right corner
+        gbc.gridx = 4;
         gbc.gridy = 1;
         panel.add(colorBox, gbc);
 
