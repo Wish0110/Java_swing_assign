@@ -53,7 +53,7 @@ public class page1 extends JFrame {
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;  // Center horizontally
+          // Center horizontally
         gbc.insets = new Insets(0, 0, 450, 0);  // Top inset of 100px
         this.add(wallColorLabel, gbc);
 
