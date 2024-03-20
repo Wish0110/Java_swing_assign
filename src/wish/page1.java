@@ -40,40 +40,46 @@ public class page1 extends JFrame {
             }
         });
 
+
         // Create a horizontal layout manager
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
-        GridBagConstraints gbc = new GridBagConstraints();
 
-        // Adjust spacing between components (modify as needed)
-        gbc.insets = new Insets(10, 120, 100, 0);
+        // Separate GridBagConstraints objects with individual insets
+        GridBagConstraints gbcWallColorLabel = new GridBagConstraints();
+        gbcWallColorLabel.insets = new Insets(10, 120, 100, 0);  // Margin for wallColorLabel
+
+        GridBagConstraints gbcFurnitureLabel = new GridBagConstraints();
+        gbcFurnitureLabel.insets = new Insets(5, 20, 10, 20);  // Margin for furnitureLabel
+
+        GridBagConstraints gbcColorSelector = new GridBagConstraints();
+        gbcColorSelector.insets = new Insets(0, 20, 10, 50);  // Margin for colorSelector
 
         // **Wall Color Label (Top, Left-aligned with padding)**
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
-        gbc.gridx = 0;  // Leftmost column
-        gbc.gridy = 0;  // Top row
-        gbc.anchor = GridBagConstraints.WEST;  // Left-aligned
-        this.add(wallColorLabel, gbc);
+        gbcWallColorLabel.gridx = 0;  // Leftmost column
+        gbcWallColorLabel.gridy = 0;  // Top row
+        gbcWallColorLabel.anchor = GridBagConstraints.WEST;  // Left-aligned
+        this.add(wallColorLabel, gbcWallColorLabel);
 
         // **Furniture Label (Next row, Left-aligned)**
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        gbc.gridy = 1;  // Next row
-        this.add(furnitureLabel, gbc);
+        gbcFurnitureLabel.gridy = 1;  // Next row
+        this.add(furnitureLabel, gbcFurnitureLabel);
 
         // **Combo Box (Next row, Left-aligned)**
-        gbc.gridy = 2;
-        this.add(colorSelector, gbc);
-
+        gbcColorSelector.gridy = 2;
+        this.add(colorSelector, gbcColorSelector);
         // **Color Box (Next row, Right-aligned)**
-        gbc.fill = GridBagConstraints.NONE;  // Don't fill horizontally
-        gbc.gridx = 1;  // Move to the second column (right side)
-        gbc.weightx = 0.0;  // No extra space allocation
-        gbc.anchor = GridBagConstraints.EAST;  // Right-aligned
-        this.add(colorBox, gbc);
+        gbcColorSelector.fill = GridBagConstraints.NONE;  // Don't fill horizontally (use a separate gbc for colorBox)
+        gbcColorSelector.gridx = 1;  // Move to the second column (right side)
+        gbcColorSelector.weightx = 0.0;  // No extra space allocation
+        gbcColorSelector.anchor = GridBagConstraints.EAST;  // Right-aligned
+        this.add(colorBox, gbcColorSelector);
 
         this.pack();
         this.setSize(900, 600);
