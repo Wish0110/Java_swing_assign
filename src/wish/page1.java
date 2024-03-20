@@ -7,7 +7,6 @@ import javax.imageio.ImageIO;
 
 public class page1 {
 
-    private JLabel wallColorLabel;
     private JLabel furnitureLabel;
     private JComboBox<String> colorSelector;
     private JPanel colorBox;
@@ -21,10 +20,6 @@ public class page1 {
             e.printStackTrace();
         }
 
-        // Create components
-        wallColorLabel = new JLabel("Wall Color According to Furniture");
-        wallColorLabel.setForeground(Color.decode("#F7AD3A"));
-        wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
 
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
@@ -52,10 +47,6 @@ public class page1 {
         gbc.insets = new Insets(5, 20, 10, 20);
         gbc.anchor = GridBagConstraints.WEST;
 
-        // Add wallColorLabel to the top-left corner
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        panel.add(wallColorLabel, gbc);
 
         // Add furnitureLabel to the middle-left corner
         gbc.gridy = 1;
