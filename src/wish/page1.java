@@ -67,8 +67,11 @@ public class page1 extends JFrame {
         gbc.gridy = 2;
         this.add(colorSelector, gbc);
 
-        // **Color Box (Next row, Optional)**
-        gbc.gridy = 3;
+        // **Color Box (Next row, Right-aligned)**
+        gbc.fill = GridBagConstraints.HORIZONTAL;  // Fill horizontally
+        gbc.gridx = 1;  // Move to the second column (right side)
+        gbc.weightx = 1.0;  // Allocate remaining space
+        gbc.anchor = GridBagConstraints.EAST;  // Right-aligned
         this.add(colorBox, gbc);
 
         this.pack();
