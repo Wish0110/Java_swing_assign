@@ -46,7 +46,7 @@ public class page1 extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Adjust spacing between components (modify as needed)
-        gbc.insets = new Insets(10, 20, 10, 20);
+        gbc.insets = new Insets(10, 20, 100, 20);
 
         // **Wall Color Label (Top, Left-aligned with padding)**
         wallColorLabel = new JLabel("Wall Color According to Furniture");
