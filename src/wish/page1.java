@@ -44,34 +44,31 @@ public class page1 extends JFrame {
         this.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Center components horizontally
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        // Adjust spacing between components (modify as needed)
+        gbc.insets = new Insets(10, 20, 10, 20);
 
-        // **Wall Color Label (Top, Centered)**
+        // **Wall Color Label (Top, Left-aligned with padding)**
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
         gbc.gridx = 0;  // Leftmost column
         gbc.gridy = 0;  // Top row
-        gbc.anchor = GridBagConstraints.CENTER;  // Center horizontally
-        gbc.insets = new Insets(100, 250, 10, 0);  // Top inset of 100px, adjust horizontal padding if needed
+        gbc.anchor = GridBagConstraints.WEST;  // Left-aligned
         this.add(wallColorLabel, gbc);
 
-        // **Furniture Label (Next Row, Left-aligned)**
+        // **Furniture Label (Next row, Left-aligned)**
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        gbc.gridy = 1;  // Next row after wallColorLabel
-        gbc.anchor = GridBagConstraints.WEST;  // Left-aligned (default)
-        gbc.insets = new Insets(10, 0, 10, 0);  // Adjust spacing between labels if needed
+        gbc.gridy = 1;  // Next row
         this.add(furnitureLabel, gbc);
 
-        // **Combo Box (Next Row, Right-aligned)**
-        gbc.gridy = 2;  // Next row after furnitureLabel
+        // **Combo Box (Next row, Left-aligned)**
+        gbc.gridy = 2;
         this.add(colorSelector, gbc);
 
-        // **Color Box (Next Row, Optional)**
-        gbc.gridy = 3;  // Next row
+        // **Color Box (Next row, Optional)**
+        gbc.gridy = 3;
         this.add(colorBox, gbc);
 
         this.pack();
