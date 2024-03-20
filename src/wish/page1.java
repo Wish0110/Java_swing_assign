@@ -1,104 +1,81 @@
 package wish;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import javax.imageio.*;
-import java.io.File;
-import java.io.IOException;
 
-public class page1 extends JFrame {
+public class page1 {
 
-    private ImageIcon backgroundImageIcon;
-    private JPanel colorBox;
+    private JLabel wallColorLabel;
+    private JLabel furnitureLabel;
     private JComboBox<String> colorSelector;
-    private JLabel furnitureLabel, wallColorLabel;
+    private JPanel colorBox;
 
     public page1() {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        try {
-            backgroundImageIcon = new ImageIcon(ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\backgroundimg1.png")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Create the custom panel for background painting
-        this.setContentPane(new BackgroundPanel());
-
-        // Create the color box and selector
-        colorBox = new JPanel();
-        colorBox.setPreferredSize(new Dimension(50, 50));  // Set desired size (width, height)
-        colorBox.setBackground(Color.red);  // Set initial background color (optional)
-
-        colorSelector = new JComboBox<>(new String[]{"Black", "Red", "Pink"});
-        colorSelector.setPreferredSize(new Dimension(200, 30));
-        colorSelector.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateColor();
-            }
-        });
-
-        // Using setBounds for component placement
-        int windowWidth = 900;
-        int windowHeight = 600;
-
-        // Wall Color Label (Top, Center)
+        // Create components
         wallColorLabel = new JLabel("Wall Color According to Furniture");
-        wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
+        wallColorLabel.setForeground(Color.decode("#F7AD3A"));
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
-        int wallColorLabelWidth = (int) wallColorLabel.getPreferredSize().getWidth();
-        int wallColorLabelHeight = (int) wallColorLabel.getPreferredSize().getHeight();
-        int xPos = (windowWidth - wallColorLabelWidth) / 2;  // Center horizontally
-        int yPos = 10;  // Adjust padding from top
-        wallColorLabel.setBounds(xPos, yPos, wallColorLabelWidth, wallColorLabelHeight);
 
-        // Calculate usable width for middle row components (excluding gaps)
-        int usableWidth = windowWidth - (colorBox.getPreferredSize().width + colorSelector.getPreferredSize().width) - 60;  // Subtract box widths and 3 gaps
-
-        // Furniture Label (Middle, Left-aligned)
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        int furnitureLabelWidth = (int) furnitureLabel.getPreferredSize().getWidth();
-        int furnitureLabelHeight = (int) furnitureLabel.getPreferredSize().getHeight();
-        int middleYPos = (windowHeight - furnitureLabelHeight) / 2;  // Center vertically
-        furnitureLabel.setBounds(10, middleYPos, furnitureLabelWidth, furnitureLabelHeight);
 
-        // Color Selector (Middle, Center)
-        int colorSelectorWidth = colorSelector.getPreferredSize().width;
-        int colorSelectorHeight = colorSelector.getPreferredSize().height;
-        int colorSelectorXPos = furnitureLabelWidth + 20 + (usableWidth - colorSelectorWidth) / 2;  // Account for gap and center
-        colorSelector.setBounds(colorSelectorXPos, middleYPos, colorSelectorWidth, colorSelectorHeight);
+        String[] colors = {"Black", "Red", "Pink"};
+        colorSelector = new JComboBox<>(colors);
+        colorSelector.addActionListener(e -> updateColor());
 
-        // Color Box (Middle, Right-aligned)
-        int colorBoxWidth = colorBox.getPreferredSize().width;
-        int colorBoxHeight = (int) colorBox.getPreferredSize().getHeight();
-        int colorBoxXPos = windowWidth - colorBoxWidth - 10;  // Right-aligned with padding
-        colorBox.setBounds(colorBoxXPos, middleYPos, colorBoxWidth, colorBoxHeight);
+        colorBox = new JPanel();
+        colorBox.setBackground(Color.white);
+        colorBox.setPreferredSize(new Dimension(100, 100));
 
-        this.add(wallColorLabel);
-        this.add(furnitureLabel);
-        this.add(colorSelector);
-        this.add(colorBox);
+        // Create layout
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
 
-        this.setSize(windowWidth, windowHeight);
-        this.setVisible(true);
-    }
-    private class BackgroundPanel extends JPanel {
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            if (backgroundImageIcon != null) {
-                g.drawImage(backgroundImageIcon.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-            }
-        }
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 20, 10, 20);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        // Add wallColorLabel to the top-left corner
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(wallColorLabel, gbc);
+
+        // Add furnitureLabel to the middle-left corner
+        gbc.gridy = 1;
+        panel.add(furnitureLabel, gbc);
+
+        // Add colorSelector to the middle-center corner
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(colorSelector, gbc);
+
+        // Add colorBox to the middle-right corner
+        gbc.gridx = 2;
+        gbc.gridy = 1;
+        panel.add(colorBox, gbc);
+
+        // Create window
+        int windowWidth = 900;
+        int windowHeight = 600;
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(windowWidth, windowHeight);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+
+        // Add panel to the window
+        frame.add(panel, BorderLayout.CENTER);
+
+        // Show window
+        frame.setVisible(true);
+
+        // Set initial color
+        updateColor();
     }
 
     private void updateColor() {
         String selectedColor = (String) colorSelector.getSelectedItem();
-        Color color = Color.white; // Default color
+        Color color = Color.white;
         switch (selectedColor) {
             case "Black":
                 color = Color.black;
@@ -113,3 +90,4 @@ public class page1 extends JFrame {
         colorBox.setBackground(color);
     }
 }
+
