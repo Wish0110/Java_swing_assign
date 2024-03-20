@@ -16,7 +16,7 @@ public class page1 extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Load the background image
-        backgroundImageIcon = new ImageIcon("C:\\Users\\Admin\\Downloads\\wall color according furnitures - 12.png");
+        backgroundImageIcon = new ImageIcon("C:\\Users\\Admin\\Downloads\\backgroundimg1.png");
 
         // Create a custom panel to handle background painting
         this.setContentPane(new BackgroundPanel());
