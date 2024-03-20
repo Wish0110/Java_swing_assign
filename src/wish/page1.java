@@ -12,6 +12,7 @@ public class page1 extends JFrame {
     private ImageIcon backgroundImageIcon;
     private JPanel colorBox;
     private JComboBox<String> colorSelector;
+    private JLabel furnitureLabel;
 
     public page1() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,20 +48,27 @@ public class page1 extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.CENTER;
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        this.add(colorSelector, gbc);
-
-        gbc.insets = new Insets(0, 200, 0, 0);
-        gbc.gridx = 1;
-        this.add(colorBox, gbc);
-
-        // Furniture Color label text
-        JLabel furnitureLabel = new JLabel("Furniture Color");
+        furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        furnitureLabel.setBounds(70, 150, 150, 20);
-        this.add(furnitureLabel);
+
+        gbc.gridx = 0;  // Add label to the first column (left)
+        gbc.gridy = 0;
+        this.add(furnitureLabel, gbc);
+
+        // Add spacing between label and combobox (adjust as needed)
+        gbc.insets = new Insets(0, 10, 0, 0);
+
+        gbc.gridx = 1;  // Add combobox to the second column (right)
+        this.add(colorSelector, gbc);
+
+        gbc.insets = new Insets(0, 200, 0, 0);  // Reset insets for combobox spacing
+
+        gbc.gridx = 2;  // Add color box to the third column (optional)
+        this.add(colorBox, gbc);
+
+
+
 
         this.pack();
         this.setSize(900, 600);
