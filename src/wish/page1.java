@@ -51,13 +51,14 @@ public class page1 extends JFrame {
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        gbc.gridx = 0;
+        gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;  // Center horizontally
         this.add(wallColorLabel, gbc);
 
         // Add spacing between labels (adjust as needed)
         gbc.insets = new Insets(10, 0, 10, 0);
+
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
