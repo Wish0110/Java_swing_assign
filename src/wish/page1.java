@@ -1,6 +1,9 @@
 package wish;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -27,7 +30,12 @@ public class page1 {
 
         String[] colors = {"Black", "Red", "Pink"};
         colorSelector = new JComboBox<>(colors);
-        colorSelector.addActionListener(e -> updateColor());
+        colorSelector.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateColor();
+            }
+        });
 
         colorBox = new JPanel();
         colorBox.setBackground(Color.white);
@@ -52,13 +60,19 @@ public class page1 {
         gbc.gridy = 1;
         panel.add(furnitureLabel, gbc);
 
-        // Add colorSelector to the middle-center corner
+        // Add text label "Suggested Colors"
+        JLabel suggestedColorsLabel = new JLabel("Suggested Colors");
         gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(suggestedColorsLabel, gbc);
+
+        // Add colorSelector to the middle-center corner
+        gbc.gridx = 2;
         gbc.gridy = 1;
         panel.add(colorSelector, gbc);
 
         // Add colorBox to the middle-right corner
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 1;
         panel.add(colorBox, gbc);
 
@@ -80,6 +94,7 @@ public class page1 {
         // Set initial color
         updateColor();
     }
+
     private void updateColor() {
         String selectedColor = (String) colorSelector.getSelectedItem();
         Color color = Color.white;
@@ -97,4 +112,3 @@ public class page1 {
         colorBox.setBackground(color);
     }
 }
-
