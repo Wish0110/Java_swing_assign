@@ -44,39 +44,45 @@ public class page1 extends JFrame {
         int windowWidth = 900;
         int windowHeight = 600;
 
-        // Wall Color Label (Top, Left-aligned with padding)
+        // Wall Color Label (Top, Center)
         wallColorLabel = new JLabel("Wall Color According to Furniture");
         wallColorLabel.setForeground(Color.decode("#F7AD3A")); // Text color
         wallColorLabel.setFont(new Font("Sans Serif", Font.BOLD, 30));
         int wallColorLabelWidth = (int) wallColorLabel.getPreferredSize().getWidth();
         int wallColorLabelHeight = (int) wallColorLabel.getPreferredSize().getHeight();
-        wallColorLabel.setBounds(10, 10, wallColorLabelWidth, wallColorLabelHeight);  // Adjust padding as needed
+        int xPos = (windowWidth - wallColorLabelWidth) / 2;  // Center horizontally
+        int yPos = 10;  // Adjust padding from top
+        wallColorLabel.setBounds(xPos, yPos, wallColorLabelWidth, wallColorLabelHeight);
 
-        // Furniture Label (Next row, Left-aligned)
+        // Calculate usable width for middle row components (excluding gaps)
+        int usableWidth = windowWidth - (colorBox.getPreferredSize().width + colorSelector.getPreferredSize().width) - 60;  // Subtract box widths and 3 gaps
+
+        // Furniture Label (Middle, Left-aligned)
         furnitureLabel = new JLabel("Furniture Color");
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
         int furnitureLabelWidth = (int) furnitureLabel.getPreferredSize().getWidth();
         int furnitureLabelHeight = (int) furnitureLabel.getPreferredSize().getHeight();
-        furnitureLabel.setBounds(10, wallColorLabelHeight + 20, furnitureLabelWidth, furnitureLabelHeight);  // Adjust padding as needed
+        int middleYPos = (windowHeight - furnitureLabelHeight) / 2;  // Center vertically
+        furnitureLabel.setBounds(10, middleYPos, furnitureLabelWidth, furnitureLabelHeight);
 
-        // Combo Box (Next row, Left-aligned)
+        // Color Selector (Middle, Center)
         int colorSelectorWidth = colorSelector.getPreferredSize().width;
         int colorSelectorHeight = colorSelector.getPreferredSize().height;
-        colorSelector.setBounds(10, furnitureLabelHeight + 40, colorSelectorWidth, colorSelectorHeight);  // Adjust padding as needed
+        int colorSelectorXPos = furnitureLabelWidth + 20 + (usableWidth - colorSelectorWidth) / 2;  // Account for gap and center
+        colorSelector.setBounds(colorSelectorXPos, middleYPos, colorSelectorWidth, colorSelectorHeight);
 
-        // Color Box (Next row, Right-aligned)
-        int colorBoxWidth = 50;  // Set desired width
-        int colorBoxHeight = 50;  // Set desired height
-        int xPos = windowWidth - colorBoxWidth - 10;  // Calculate x position for right alignment
-        colorBox.setBounds(xPos, furnitureLabelHeight + 40, colorBoxWidth, colorBoxHeight);
+        // Color Box (Middle, Right-aligned)
+        int colorBoxWidth = colorBox.getPreferredSize().width;
+        int colorBoxHeight = (int) colorBox.getPreferredSize().getHeight();
+        int colorBoxXPos = windowWidth - colorBoxWidth - 10;  // Right-aligned with padding
+        colorBox.setBounds(colorBoxXPos, middleYPos, colorBoxWidth, colorBoxHeight);
 
         this.add(wallColorLabel);
         this.add(furnitureLabel);
         this.add(colorSelector);
         this.add(colorBox);
 
-        this.pack();  // Not strictly necessary with setBounds
         this.setSize(windowWidth, windowHeight);
         this.setVisible(true);
     }
