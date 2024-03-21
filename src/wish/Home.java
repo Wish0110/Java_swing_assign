@@ -22,6 +22,7 @@ public class Home {
         }
 
         JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
+        backgroundLabel.setLayout(new BorderLayout());
 
         // Create the navigation bar
         JPanel navbar = new JPanel();
@@ -47,14 +48,9 @@ public class Home {
         });
 
         itemsButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-
-            }
-
-            //public <ActionEvente> void actionPerformed(ActionEvente) {
                 // Handle items button click
-            //}
+            }
         });
 
         employeeButton.addActionListener(new ActionListener() {
@@ -83,7 +79,7 @@ public class Home {
         navbar.add(customizeButton);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(navbar, BorderLayout.PAGE_START);
+        mainPanel.add(navbar, BorderLayout.NORTH);
         mainPanel.add(backgroundLabel, BorderLayout.CENTER);
 
         JFrame frame = new JFrame();
