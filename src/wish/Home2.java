@@ -26,7 +26,7 @@ public class Home2 {
 
         furnitureLabel = new JLabel("Ready to furnish your dream home? Let's get started!");
         furnitureLabel.setForeground(Color.decode("#ffffff"));
-        furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
+        furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
 
         // Create layout
         JPanel panel = new JPanel() {
@@ -40,7 +40,7 @@ public class Home2 {
         panel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 1, 10, 20);
+        gbc.insets = new Insets(5, 1, 10, 950);
         gbc.anchor = GridBagConstraints.WEST;
 
         // Add furnitureLabel to the middle-left corner
