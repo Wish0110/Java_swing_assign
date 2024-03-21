@@ -1,4 +1,5 @@
 package wish;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,8 +18,13 @@ public class Home {
             e.printStackTrace();
         }
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = ge.getMaximumWindowBounds();
+        int windowWidth = bounds.width;
+        int windowHeight = bounds.height;
+
+        JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
+        backgroundLabel.setLayout(new BorderLayout());
 
         // Create the navigation bar
         JPanel navbar = new JPanel();
@@ -61,28 +67,26 @@ public class Home {
             }
         });
 
-        panel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
+        navbar.add(homeButton);
+        navbar.add(branchesButton);
+        navbar.add(itemsButton);
+        navbar.add(employeeButton);
+        navbar.add(customizeButton);
 
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = ge.getMaximumWindowBounds();
-        int windowWidth = bounds.width;
-        int windowHeight = bounds.height;
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.add(navbar, BorderLayout.NORTH);
+
+        backgroundLabel.add(panel);
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(windowWidth, windowHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.getContentPane().add(panel);
+        frame.getContentPane().add(backgroundLabel);
         frame.setVisible(true);
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
