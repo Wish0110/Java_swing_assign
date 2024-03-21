@@ -2,6 +2,7 @@ package wish;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,14 +27,24 @@ public class Home {
 
         // Create the navigation bar
         JPanel navbar = new JPanel();
-        navbar.setOpaque(false); // Set navbar background transparent
+        navbar.setBackground(new Color(43, 74, 71)); // Set navbar background color to "#2B4A47"
         navbar.setPreferredSize(new Dimension(0, 50));
+        navbar.setBorder(new EmptyBorder(20, 0, 0, 0)); // Add top margin of 20 pixels
 
         JButton homeButton = new JButton("Home");
+        homeButton.setBackground(Color.decode("#2B4A47"));
+
         JButton branchesButton = new JButton("Branches");
+        branchesButton.setBackground(Color.decode("#2B4A47"));
+
         JButton itemsButton = new JButton("Items");
+        itemsButton.setBackground(Color.decode("#2B4A47"));
+
         JButton employeeButton = new JButton("Employee");
+        employeeButton.setBackground(Color.decode("#2B4A47"));
+
         JButton customizeButton = new JButton("Customize");
+        customizeButton.setBackground(Color.decode("#2B4A47"));
 
         homeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -67,10 +78,10 @@ public class Home {
 
         // Set text color of the buttons to yellow
         homeButton.setForeground(Color.YELLOW);
-        branchesButton.setForeground(Color.YELLOW);
-        itemsButton.setForeground(Color.YELLOW);
-        employeeButton.setForeground(Color.YELLOW);
-        customizeButton.setForeground(Color.YELLOW);
+        branchesButton.setForeground(Color.white);
+        itemsButton.setForeground(Color.white);
+        employeeButton.setForeground(Color.white);
+        customizeButton.setForeground(Color.white);
 
         navbar.add(homeButton);
         navbar.add(branchesButton);
