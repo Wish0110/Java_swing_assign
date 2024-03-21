@@ -40,8 +40,7 @@ public class Home {
         homeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Handle home button click
-            }
-        });
+            }});
 
         branchesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -73,20 +72,19 @@ public class Home {
         navbar.add(employeeButton);
         navbar.add(customizeButton);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        panel.add(navbar, BorderLayout.NORTH);
-
-        backgroundLabel.add(panel);
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(navbar, BorderLayout.NORTH);
+        mainPanel.add(backgroundLabel, BorderLayout.CENTER);
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(windowWidth, windowHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.getContentPane().add(backgroundLabel);
+        frame.getContentPane().add(mainPanel);
         frame.setVisible(true);
     }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
