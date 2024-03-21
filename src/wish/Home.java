@@ -1,34 +1,32 @@
 package wish;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class Home {
     private Image backgroundImage;
 
     public Home() {
         try {
-            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Group 1.png"));
+            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Group 1.png")).getScaledInstance(
+                    GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width,
+                    GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height,
+                    Image.SCALE_DEFAULT);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = ge.getMaximumWindowBounds();
-        int windowWidth = bounds.width;
-        int windowHeight = bounds.height;
 
         JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
         backgroundLabel.setLayout(new BorderLayout());
 
         // Create the navigation bar
         JPanel navbar = new JPanel();
-        navbar.setBackground(Color.DARK_GRAY);
+        navbar.setOpaque(false); // Set navbar background transparent
         navbar.setPreferredSize(new Dimension(0, 50));
 
         JButton homeButton = new JButton("Home");
@@ -40,7 +38,8 @@ public class Home {
         homeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Handle home button click
-            }});
+            }
+        });
 
         branchesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -66,6 +65,13 @@ public class Home {
             }
         });
 
+        // Set text color of the buttons to yellow
+        homeButton.setForeground(Color.YELLOW);
+        branchesButton.setForeground(Color.YELLOW);
+        itemsButton.setForeground(Color.YELLOW);
+        employeeButton.setForeground(Color.YELLOW);
+        customizeButton.setForeground(Color.YELLOW);
+
         navbar.add(homeButton);
         navbar.add(branchesButton);
         navbar.add(itemsButton);
@@ -78,7 +84,7 @@ public class Home {
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(windowWidth, windowHeight);
+        frame.setSize(backgroundLabel.getPreferredSize().width, backgroundLabel.getPreferredSize().height);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.getContentPane().add(mainPanel);
