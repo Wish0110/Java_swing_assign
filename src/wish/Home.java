@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class Home {
     private Image backgroundImage;
+    private JLabel furnitureLabel;
 
     public Home() {
         try {
@@ -94,11 +95,16 @@ public class Home {
         navbar.add(Box.createHorizontalStrut(20));
         navbar.add(customizeButton);
 
-
+        furnitureLabel = new JLabel("Ready to furnish your dream home? Let's get started!");
+        furnitureLabel.setForeground(Color.decode("#ffffff"));
+        furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
+        furnitureLabel.setPreferredSize(new Dimension(200, 0));
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(navbar, BorderLayout.NORTH);
         mainPanel.add(backgroundLabel, BorderLayout.CENTER);
+        mainPanel.add(furnitureLabel, BorderLayout.WEST);
+
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
