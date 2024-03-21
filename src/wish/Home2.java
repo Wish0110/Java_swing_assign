@@ -28,6 +28,7 @@ public class Home2 {
         furnitureLabel.setForeground(Color.decode("#ffffff"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
 
+
         // Create layout
         JPanel panel = new JPanel() {
             @Override
@@ -41,7 +42,7 @@ public class Home2 {
 
         // Create navigation bar
         JPanel navBar = new JPanel();
-        navBar.setLayout(new FlowLayout(FlowLayout.CENTER));
+        navBar.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 70));
         navBar.setBackground(new Color(0x00204D, true));
 
         JButton homeButton = new JButton("Home");
