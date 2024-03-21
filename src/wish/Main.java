@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class Main {
     public static void main(String[] args) {
 
-        new Home() {
+        new page1() {
 
 // Title text
         /*JLabel titleLabel = new JLabel();

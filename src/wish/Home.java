@@ -15,7 +15,7 @@ public class Home {
 
     public Home() {
         try {
-            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Group 1.png")).getScaledInstance(
+            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Group 3.png")).getScaledInstance(
                     GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width,
                     GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height,
                     Image.SCALE_DEFAULT);
@@ -25,6 +25,7 @@ public class Home {
 
         JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
         backgroundLabel.setLayout(new BorderLayout());
+
 
         // Create the navigation bar
         JPanel navbar = new JPanel();
@@ -95,15 +96,13 @@ public class Home {
         navbar.add(Box.createHorizontalStrut(20));
         navbar.add(customizeButton);
 
-        furnitureLabel = new JLabel("Ready to furnish your dream home? Let's get started!");
-        furnitureLabel.setForeground(Color.decode("#ffffff"));
-        furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        furnitureLabel.setPreferredSize(new Dimension(200, 0));
+        // Create the button to be centered
+        JButton centerButton = new JButton("Click Me");
+        centerButton.setPreferredSize(new Dimension(150, 50));
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(navbar, BorderLayout.NORTH);
         mainPanel.add(backgroundLabel, BorderLayout.CENTER);
-        mainPanel.add(furnitureLabel, BorderLayout.WEST);
 
 
         JFrame frame = new JFrame();
