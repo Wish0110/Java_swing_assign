@@ -1,6 +1,7 @@
 package wish;
 import javax.swing.*;
 import java.awt.*;
+//import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -23,14 +24,17 @@ public class Home {
             }
         };
 
-        int windowWidth = 1360;
-        int windowHeight = 730;
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = ge.getMaximumWindowBounds();
+        int windowWidth = bounds.width;
+        int windowHeight = bounds.height;
+
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(windowWidth, windowHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.getContentPane().add(panel); // Add the JPanel to the JFrame's content pane
+        frame.getContentPane().add(panel);
         frame.setVisible(true);
     }
 
