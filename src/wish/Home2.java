@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Home2 {
 
+    private JLabel furnitureLabel;
     private Image backgroundImage;
 
     public Home2() {
@@ -23,30 +24,12 @@ public class Home2 {
             e.printStackTrace();
         }
 
-        // Create buttons
-        JButton homeButton = new JButton("Home");
-        JButton branchesButton = new JButton("Branches");
-        JButton itemsButton = new JButton("Items");
-        JButton employeeButton = new JButton("Employee");
-        JButton customizeButton = new JButton("Customize");
+        furnitureLabel = new JLabel("Ready to furnish your dream home? Let's get started!");
+        furnitureLabel.setForeground(Color.decode("#ffffff"));
+        furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
 
-        // Create button panel with horizontal layout
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.setBackground(new Color(0, 0, 0, 0)); // Transparent background
-
-        buttonPanel.add(homeButton);
-        buttonPanel.add(Box.createHorizontalStrut(20)); // Add spacing between buttons
-        buttonPanel.add(branchesButton);
-        buttonPanel.add(Box.createHorizontalStrut(20));
-        buttonPanel.add(itemsButton);
-        buttonPanel.add(Box.createHorizontalStrut(20));
-        buttonPanel.add(employeeButton);
-        buttonPanel.add(Box.createHorizontalStrut(20));
-        buttonPanel.add(customizeButton);
-
-        // Create main panel with BorderLayout
-        JPanel panel = new JPanel(new BorderLayout()) {
+        // Create layout
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -54,8 +37,57 @@ public class Home2 {
             }
         };
 
-        // Add button panel to the top of the main panel
-        panel.add(buttonPanel, BorderLayout.NORTH);
+        panel.setLayout(new BorderLayout());
+
+        // Create navigation bar
+        JPanel navBar = new JPanel();
+        navBar.setLayout(new FlowLayout(FlowLayout.CENTER));
+        navBar.setBackground(new Color(0x00204D, true));
+
+        JButton homeButton = new JButton("Home");
+        JButton branchesButton = new JButton("Branches");
+        JButton itemsButton = new JButton("Items");
+        JButton employeeButton = new JButton("Employee");
+        JButton customizeButton = new JButton("Customize");
+
+        homeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle Home button action
+            }
+        });
+
+        branchesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle Branches button action
+            }
+        });
+
+        itemsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle Items button action
+            }
+        });
+
+        employeeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle Employee button action
+            }
+        });
+
+        customizeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle Customize button action
+            }
+        });
+
+        navBar.add(homeButton);
+        navBar.add(branchesButton);
+        navBar.add(itemsButton);
+        navBar.add(employeeButton);
+        navBar.add(customizeButton);
+
+        panel.add(navBar, BorderLayout.NORTH);
+        panel.add(furnitureLabel, BorderLayout.CENTER);
 
         // Create window and set size to screen size
         JFrame frame = new JFrame();
@@ -64,7 +96,7 @@ public class Home2 {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
-        // Add main panel to the window
+        // Add panel to the window
         frame.setContentPane(panel);
 
         // Show window
@@ -79,5 +111,3 @@ public class Home2 {
         });
     }
 }
-
-
