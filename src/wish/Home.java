@@ -11,7 +11,7 @@ public class Home {
 
     public Home() {
         try {
-            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\wall color according furnitures - 12.png"));
+            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\Login - 2.png"));
         } catch (
                 IOException e) {
             e.printStackTrace();
