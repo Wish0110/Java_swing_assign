@@ -10,7 +10,7 @@ public class Home {
 
     public Home() {
         try {
-            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Login - 2.png"));
+            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Group 1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
