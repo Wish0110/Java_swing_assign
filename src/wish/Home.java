@@ -1,10 +1,10 @@
 package wish;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Home {
     private Image backgroundImage;
