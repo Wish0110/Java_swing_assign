@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.border.Border;
 
 public class Home2 {
 
@@ -27,6 +28,7 @@ public class Home2 {
         furnitureLabel = new JLabel("Ready to furnish your dream home? Let's get started!");
         furnitureLabel.setForeground(Color.decode("#ffffff"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
+        furnitureLabel.setBorder(BorderFactory.createEmptyBorder(0, 50, 100, 0)); // Top, left, bottom, right margins
 
 
         // Create layout
@@ -42,14 +44,46 @@ public class Home2 {
 
         // Create navigation bar
         JPanel navBar = new JPanel();
-        navBar.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 70));
-        navBar.setBackground(new Color(0x00204D, true));
+        navBar.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 30));
+        navBar.setBackground(new Color(0x002B4A47, true));
+        navBar.setBorder(BorderFactory.createEmptyBorder(20, 50, 70, 0));
 
         JButton homeButton = new JButton("Home");
         JButton branchesButton = new JButton("Branches");
         JButton itemsButton = new JButton("Items");
         JButton employeeButton = new JButton("Employee");
         JButton customizeButton = new JButton("Customize");
+
+        Border border = BorderFactory.createLineBorder(Color.decode("#F7AD3A"), 2); // Red border with thickness 2px
+
+        // Set background color for all buttons
+        homeButton.setBackground(Color.decode("#F7AD3A")); // Modify hex code for desired color
+        branchesButton.setBackground(Color.decode("#2B4A47"));
+        itemsButton.setBackground(Color.decode("#2B4A47"));
+        employeeButton.setBackground(Color.decode("#2B4A47"));
+        customizeButton.setBackground(Color.decode("#2B4A47"));
+
+        homeButton.setBorder(border);
+        branchesButton.setBorder(border);
+        itemsButton.setBorder(border);
+        employeeButton.setBorder(border);
+        customizeButton.setBorder(border);
+
+        Insets insets = new Insets(10, 10, 10, 10); // Top, left, bottom, right padding
+
+        // Set padding for all buttons
+        homeButton.setMargin(insets);
+        branchesButton.setMargin(insets);
+        itemsButton.setMargin(insets);
+        employeeButton.setMargin(insets);
+        customizeButton.setMargin(insets);
+
+        // Set text color for all buttons (optional)
+        homeButton.setForeground(Color.black); // White text
+        branchesButton.setForeground(Color.WHITE);
+        itemsButton.setForeground(Color.WHITE);
+        employeeButton.setForeground(Color.WHITE);
+        customizeButton.setForeground(Color.WHITE);
 
         homeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
