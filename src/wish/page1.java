@@ -29,7 +29,7 @@ public class page1 {
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
 
-        String[] colors = {"Black", "Red", "Pink"};
+        String[] colors = {"Pick a color", "Black", "Red", "Pink"};
         colorSelector = new JComboBox<>(colors);
         colorSelector.setBackground(Color.decode("#2B4A47"));
         colorSelector.setForeground(Color.decode("#F7AD3A"));
