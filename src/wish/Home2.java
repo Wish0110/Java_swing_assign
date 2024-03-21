@@ -10,24 +10,23 @@ import javax.imageio.ImageIO;
 
 public class Home2 {
 
-
     private JLabel furnitureLabel;
     private Image backgroundImage;
 
-
     public Home2() {
-        // Load background image
+        // Get screen size
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Load background image (assuming image is less than screen size)
         try {
             backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\Group 1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
         furnitureLabel = new JLabel("Ready to furnish your dream home? Let's get started!");
         furnitureLabel.setForeground(Color.decode("#ffffff"));
         furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-
 
         // Create layout
         JPanel panel = new JPanel() {
@@ -48,13 +47,10 @@ public class Home2 {
         gbc.gridy = 0;
         panel.add(furnitureLabel, gbc);
 
-
-        // Create window
-        int windowWidth = 900;
-        int windowHeight = 600;
+        // Create window and set size to screen size
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(windowWidth, windowHeight);
+        frame.setSize(screenSize);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
@@ -63,8 +59,6 @@ public class Home2 {
 
         // Show window
         frame.setVisible(true);
-
-        // Set initial color
     }
 
     public static void main(String[] args) {
@@ -75,5 +69,3 @@ public class Home2 {
         });
     }
 }
-
-
