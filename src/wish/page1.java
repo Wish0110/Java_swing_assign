@@ -12,7 +12,6 @@ public class page1 {
 
     private JLabel furnitureLabel;
     private JComboBox<String> colorSelector;
-    private JPanel colorBox;
     private Image backgroundImage;
     private JPanel colorBox1, colorBox2;
 
