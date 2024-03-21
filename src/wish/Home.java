@@ -1,8 +1,7 @@
 package wish;
-
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -11,9 +10,8 @@ public class Home {
 
     public Home() {
         try {
-            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\Login - 2.png"));
-        } catch (
-                IOException e) {
+            backgroundImage = ImageIO.read(new File("C:\\Users\\Admin\\Downloads\\Login - 2.png"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -32,6 +30,15 @@ public class Home {
         frame.setSize(windowWidth, windowHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
+        frame.getContentPane().add(panel); // Add the JPanel to the JFrame's content pane
         frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Home();
+            }
+        });
     }
 }
