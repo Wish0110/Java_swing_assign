@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class page1 {
     private JLabel furnitureLabel;
+    private JLabel SuggestedColors;
     private JComboBox<String> colorSelector;
     private JPanel colorBox1;
     private JPanel colorBox2;
@@ -20,6 +21,11 @@ public class page1 {
         furnitureLabel = new JLabel("Furniture", SwingConstants.CENTER);
         furnitureLabel.setFont(new Font("Arial", Font.BOLD, 18));
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
+
+        // Create suggest colors label
+        SuggestedColors = new JLabel("Suggested Colors", SwingConstants.CENTER);
+        SuggestedColors.setFont(new Font("Arial", Font.BOLD, 18));
+        SuggestedColors.setForeground(Color.decode("#2B4A47"));
 
         // Create color selector
         colorSelector = new JComboBox<>(new String[]{"Black", "Red", "Pink"});
@@ -54,17 +60,20 @@ public class page1 {
         container.setLayout(null);
 
         // Set component positions
-        int furnitureLabelX = 50, furnitureLabelY = 50, furnitureLabelWidth = 150, furnitureLabelHeight = 45;
-        int colorSelectorX = 50, colorSelectorY = 100, colorSelectorWidth = 150, colorSelectorHeight = 30;
-        int colorBox1X = 250, colorBox1Y = 100, colorBox1Width = 100, colorBox1Height = 100;
-        int colorBox2X = 450, colorBox2Y = 100, colorBox2Width = 100, colorBox2Height = 100;
+        int furnitureLabelX = 50, furnitureLabelY = 200, furnitureLabelWidth = 150, furnitureLabelHeight = 45;
+        int SuggestedColorsX = 400, SuggestedColorsY = 200, SuggestedColorsWidth = 250, SuggestedColorsHeight = 45;
+        int colorSelectorX = 230, colorSelectorY = 210, colorSelectorWidth = 150, colorSelectorHeight = 30;
+        int colorBox1X = 650, colorBox1Y = 210, colorBox1Width = 100, colorBox1Height = 100;
+        int colorBox2X = 650, colorBox2Y = 330, colorBox2Width = 100, colorBox2Height = 100;
 
         furnitureLabel.setBounds(furnitureLabelX, furnitureLabelY, furnitureLabelWidth, furnitureLabelHeight);
+        SuggestedColors.setBounds(SuggestedColorsX, SuggestedColorsY, SuggestedColorsWidth, SuggestedColorsHeight);
         colorSelector.setBounds(colorSelectorX, colorSelectorY, colorSelectorWidth, colorSelectorHeight);
         colorBox1.setBounds(colorBox1X, colorBox1Y, colorBox1Width, colorBox1Height);
         colorBox2.setBounds(colorBox2X, colorBox2Y, colorBox2Width, colorBox2Height);
 
         container.add(furnitureLabel);
+        container.add(SuggestedColors);
         container.add(colorSelector);
         container.add(colorBox1);
         container.add(colorBox2);
@@ -116,5 +125,12 @@ public class page1 {
                 break;
         }
         colorBox2.setBackground(color);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new page1();
+            }
+        });
     }
 }
