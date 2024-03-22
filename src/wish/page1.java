@@ -4,32 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class page1 {
-
     private JLabel furnitureLabel;
     private JComboBox<String> colorSelector;
+    private JPanel colorBox1;
+    private JPanel colorBox2;
     private Image backgroundImage;
-    private JPanel colorBox1, colorBox2;
 
     public page1() {
         // Load background image
-        try {
-            backgroundImage = ImageIO.read(new FileInputStream("C:\\Users\\Admin\\Downloads\\wall color according furnitures - 12.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        backgroundImage = Toolkit.getDefaultToolkit().getImage("C:\\Users\\Admin\\Downloads\\backgroundimg1.png");
 
-
-        furnitureLabel = new JLabel("Furniture Color");
+        // Create furniture label
+        furnitureLabel = new JLabel("Furniture", SwingConstants.CENTER);
+        furnitureLabel.setFont(new Font("Arial", Font.BOLD, 18));
         furnitureLabel.setForeground(Color.decode("#2B4A47"));
-        furnitureLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
 
-        String[] colors = {"Pick a color", "Black", "Red", "Pink"};
-        colorSelector = new JComboBox<>(colors);
+        // Create color selector
+        colorSelector = new JComboBox<>(new String[]{"Black", "Red", "Pink"});
         colorSelector.setBackground(Color.decode("#2B4A47"));
         colorSelector.setForeground(Color.decode("#F7AD3A"));
         colorSelector.setPreferredSize(new Dimension(150, 30));
@@ -41,52 +34,47 @@ public class page1 {
             }
         });
 
+        // Create color boxes
         colorBox1 = new JPanel();
         colorBox1.setBackground(Color.white);
         colorBox1.setPreferredSize(new Dimension(100, 100));
 
-        colorBox2 = new JPanel();  // Create the second color box
-        colorBox2.setBackground(Color.white);  // Set initial color (optional)
+        colorBox2 = new JPanel();
+        colorBox2.setBackground(Color.white);
         colorBox2.setPreferredSize(new Dimension(100, 100));
 
-        // Create layout
-        JPanel panel = new JPanel() {
+        // Create container and set background image
+        JPanel container = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
             }
         };
+        container.setLayout(null);
 
-        panel.setLayout(new GridBagLayout());
+        // Set component positions
+        int furnitureLabelX = 50;
+        int furnitureLabelY = 50;
+        int colorSelectorX = 250;
+        int colorSelectorY = 45;
+        int colorBox1X = 450;
+        int colorBox1Y = 50;
+        int colorBox2X = 450;
+        int colorBox2Y = 150;
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 20, 10, 20);
-        gbc.anchor = GridBagConstraints.WEST;
+        container.add(furnitureLabel);
+        container.add(colorSelector);
+        container.add(colorBox1);
+        container.add(colorBox2);
 
-        // Add furnitureLabel to the middle-left corner
-        gbc.gridy = 1;
-        panel.add(furnitureLabel, gbc);
+        furnitureLabel.setBounds(furnitureLabelX, furnitureLabelY, 150, 30);
+        colorSelector.setBounds(colorSelectorX, colorSelectorY, 150, 30);
+        colorBox1.setBounds(colorBox1X, colorBox1Y, 100, 100);
+        colorBox2.setBounds(colorBox2X, colorBox2Y, 100, 100);
 
-        // Add colorSelector to the middle-center corner
-        gbc.gridx = 2;
-        gbc.gridy = 1;
-        panel.add(colorSelector, gbc);
-
-        // Add text label "Suggested Colors"
-        JLabel suggestedColorsLabel = new JLabel("Suggested Colors");
-        suggestedColorsLabel.setFont(new Font("Sans Serif", Font.BOLD, 18));
-        suggestedColorsLabel.setForeground(Color.decode("#2B4A47"));
-        gbc.gridx = 3;
-        gbc.gridy = 1;
-        panel.add(suggestedColorsLabel, gbc);
-
-        gbc.gridx = 4;
-        gbc.gridy = 1;
-        panel.add(colorBox1, gbc);
-
-        gbc.gridy = 2;
-        panel.add(colorBox2, gbc);
+        // Set initial color
+        updateColor();
 
         // Create window
         int windowWidth = 900;
@@ -97,14 +85,10 @@ public class page1 {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
-        // Add panel to the window
-        frame.setContentPane(panel);
+        frame.setContentPane(container);
 
         // Show window
         frame.setVisible(true);
-
-        // Set initial color
-        updateColor();
     }
 
     private void updateColor() {

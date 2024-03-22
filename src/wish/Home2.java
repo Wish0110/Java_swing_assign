@@ -40,6 +40,7 @@ public class Home2 {
             }
         };
 
+
         panel.setLayout(new BorderLayout());
 
         // Create navigation bar
