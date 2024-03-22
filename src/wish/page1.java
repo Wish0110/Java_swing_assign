@@ -54,24 +54,20 @@ public class page1 {
         container.setLayout(null);
 
         // Set component positions
-        int furnitureLabelX = 50;
-        int furnitureLabelY = 50;
-        int colorSelectorX = 250;
-        int colorSelectorY = 45;
-        int colorBox1X = 450;
-        int colorBox1Y = 50;
-        int colorBox2X = 450;
-        int colorBox2Y = 150;
+        int furnitureLabelX = 50, furnitureLabelY = 50, furnitureLabelWidth = 150, furnitureLabelHeight = 45;
+        int colorSelectorX = 50, colorSelectorY = 100, colorSelectorWidth = 150, colorSelectorHeight = 30;
+        int colorBox1X = 250, colorBox1Y = 100, colorBox1Width = 100, colorBox1Height = 100;
+        int colorBox2X = 450, colorBox2Y = 100, colorBox2Width = 100, colorBox2Height = 100;
+
+        furnitureLabel.setBounds(furnitureLabelX, furnitureLabelY, furnitureLabelWidth, furnitureLabelHeight);
+        colorSelector.setBounds(colorSelectorX, colorSelectorY, colorSelectorWidth, colorSelectorHeight);
+        colorBox1.setBounds(colorBox1X, colorBox1Y, colorBox1Width, colorBox1Height);
+        colorBox2.setBounds(colorBox2X, colorBox2Y, colorBox2Width, colorBox2Height);
 
         container.add(furnitureLabel);
         container.add(colorSelector);
         container.add(colorBox1);
         container.add(colorBox2);
-
-        furnitureLabel.setBounds(furnitureLabelX, furnitureLabelY, 150, 30);
-        colorSelector.setBounds(colorSelectorX, colorSelectorY, 150, 30);
-        colorBox1.setBounds(colorBox1X, colorBox1Y, 100, 100);
-        colorBox2.setBounds(colorBox2X, colorBox2Y, 100, 100);
 
         // Set initial color
         updateColor();
@@ -91,8 +87,7 @@ public class page1 {
         frame.setVisible(true);
     }
 
-    private void updateColor() {
-        String selectedColor = (String) colorSelector.getSelectedItem();
+    private void updateColor() {String selectedColor = (String) colorSelector.getSelectedItem();
         Color color = Color.white;
         switch (selectedColor) {
             case "Black":
